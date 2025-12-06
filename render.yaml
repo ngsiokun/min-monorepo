@@ -1,3 +1,4 @@
+# Exported from Render on 2025-12-06T18:50:37Z
 version: "1"
 projects:
 - name: My project
@@ -5,7 +6,15 @@ projects:
   - name: Production
     services:
     - type: web
-      name: min-monorepo-backend
+      name: fullapp-fe
+      runtime: static
+      repo: https://github.com/foongsy/min-monorepo
+      buildCommand: bun run build
+      staticPublishPath: dist
+      autoDeployTrigger: commit
+      rootDir: frontend
+    - type: web
+      name: fullapp-be
       runtime: python
       repo: https://github.com/foongsy/min-monorepo
       plan: free
@@ -15,7 +24,10 @@ projects:
       - key: PORT
         value: 10000
       - key: CORS_ORIGINS
-        sync: false
+        fromService: # Copy the MINIO_ROOT_PASSWORD from the private service 'minio'
+          type: web
+          name: fullapp-fe
+          envVarKey: RENDER_EXTERNAL_URL
       region: singapore
       buildCommand: uv sync --no-dev
       startCommand: uv run main.py
