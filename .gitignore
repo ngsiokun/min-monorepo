@@ -39,6 +39,4 @@ frontend/.cache/
 Thumbs.db
 
 # Monorepo
-.turbo/
-
-frontend/
+.turbo
