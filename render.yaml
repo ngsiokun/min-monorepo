@@ -1,12 +1,12 @@
 # Exported from Render on 2025-12-06T18:50:37Z
 version: "1"
 projects:
-- name: min-monorepo-v2
+- name: monorepo-app-dec07
   environments:
   - name: Production
     services:
     - type: web
-      name: min-monorepo-frontend-v2
+      name: monorepo-fe-dec07
       runtime: static
       repo: https://github.com/ngsiokun/min-monorepo
       branch: main
@@ -15,7 +15,7 @@ projects:
       autoDeployTrigger: commit
       rootDir: frontend
     - type: web
-      name: min-monorepo-backend-v2
+      name: monorepo-be-dec07
       runtime: python
       repo: https://github.com/ngsiokun/min-monorepo
       branch: main
@@ -28,7 +28,7 @@ projects:
       - key: CORS_ORIGINS
         fromService: # Copy frontend URL for CORS configuration
           type: web
-          name: min-monorepo-frontend-v2
+          name: monorepo-fe-dec07
           envVarKey: RENDER_EXTERNAL_URL
       region: singapore
       buildCommand: uv sync --no-dev
