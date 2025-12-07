@@ -8,15 +8,15 @@ projects:
     - type: web
       name: fullapp-fe
       runtime: static
-      repo: https://github.com/foongsy/min-monorepo
-      buildCommand: bun run build
+      repo: https://github.com/ngsiokun/min-monorepo
+      buildCommand: npm run build
       staticPublishPath: dist
       autoDeployTrigger: commit
       rootDir: frontend
     - type: web
       name: fullapp-be
       runtime: python
-      repo: https://github.com/foongsy/min-monorepo
+      repo: https://github.com/ngsiokun/min-monorepo
       plan: free
       envVars:
       - key: ENV
@@ -24,7 +24,7 @@ projects:
       - key: PORT
         value: 10000
       - key: CORS_ORIGINS
-        fromService: # Copy the MINIO_ROOT_PASSWORD from the private service 'minio'
+        fromService: # Copy frontend URL for CORS configuration
           type: web
           name: fullapp-fe
           envVarKey: RENDER_EXTERNAL_URL
