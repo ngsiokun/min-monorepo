@@ -1,7 +1,7 @@
 # Exported from Render on 2025-12-06T18:50:37Z
 version: "1"
 projects:
-- name: My project
+- name: my-project
   environments:
   - name: Production
     services:
@@ -9,14 +9,16 @@ projects:
       name: fullapp-fe
       runtime: static
       repo: https://github.com/ngsiokun/min-monorepo
+      branch: main
       buildCommand: npm run build
-      staticPublishPath: dist
+      staticPublishPath: ./dist
       autoDeployTrigger: commit
       rootDir: frontend
     - type: web
       name: fullapp-be
       runtime: python
       repo: https://github.com/ngsiokun/min-monorepo
+      branch: main
       plan: free
       envVars:
       - key: ENV
