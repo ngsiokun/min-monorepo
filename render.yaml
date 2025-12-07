@@ -1,7 +1,7 @@
 # Exported from Render on 2025-12-06T18:50:37Z
 version: "1"
 projects:
-- name: my-project
+- name: min-monorepo-project
   environments:
   - name: Production
     services:
